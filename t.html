@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This GPA calculator computes your GPA and based on the grades and Course(Should be in CAPS) inputted. For all Program or General Elective please input Elective.">
+    <title>GPA Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 10px;
+            background-color: #e1e6e7; /* Light green background color */
+        }
+    
+        .gpa-calculator {
+            border: 2px solid #d3d3d3; /* Lighter grey border color */
+            padding: 20px;
+            border-radius: 10px; /* Optional: adds rounded corners */
+            background-color: white; /* Optional: background color for the calculator */
+            text-align: center;
+            font-weight: normal;
+        } /* Closing the .gpa-calculator class */
+        .table-wrapper {
+            max-height: 500px; /* Set a fixed height for the table */
+            overflow-y: auto; /* Enable vertical scroll */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            border: 2px solid #d3d3d3; /* Lighter grey border color */
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid #d3d3d3; /* Lighter grey border color */
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+      
+        .circle {
+            width: 150px;
+            height: 100px;
+            border-radius: 80%;
+            background-color: #e1e6e7;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin: 20px auto;
+        }
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            flex-direction: column;
+        }
+        .semester h2 {
+            text-align: center;
+            font-weight: normal;
+        }
+    
+    
+    .semester-content {
+        display: none;
+    }
+        
+    </style>
+</head>
+<body>
+    <div class="center">
+        <div class="gpa-calculator">
+            <h1>GPA Calculator</h1>
+
+            <div id="semesters">
+                <div class="semester">
+                    <h2>Semester 1</h2>
+                    
+                    <table class="courseTable">
+                        <thead>
+                            <tr>
+                                <th>Course</th>
+                                <th>Credits</th>
+                                <th>Grade</th>
+                                <th>Grade Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" name="course" oninput="updateCredits(this)"></td>
+                                <td class="credits"></td>
+                                <td>
+                                    <select name="grade" onchange="calculateGradePoints(this)">
+                                        <option value="">Select</option>
+                                        <option value="4">A</option>
+                                        <option value="4">A+</option>
+                                        <option value="3.7">A-</option>
+                                        <option value="3.3">B+</option>
+                                        <option value="3">B</option>
+                                        <option value="2.7">B-</option>
+                                        <option value="2.3">C+</</option>
+                                        <option value="2">C</option>
+                                        <option value="1.7">C-</option>
+                                        <option value="1.3">D+</</option>
+                                        <option value="1">D</option>
+                                        <option value="0">F</option>
+                                    </select>
+                                </td>
+                                <td class="gradePoints"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button onclick="addRow(this)">Add Course</button>
+                    <button onclick="calculateGPA(this)">Calculate GPA</button>
+                    <h2 class="gpaResult">GPA: </h2>
+                </div>
+            </div>
+
+            <button onclick="addSemester()">Add Semester</button>
+            <button onclick="calculateProgramGPA()">Calculate Program GPA</button>
+            <div class="circle" id="programGPAResult">GPA: </div>
+        </div>
+    </div>
+
+    
+
+    <script src="scriptup.js"></script>
+    
+    
+</body>
+</html>
